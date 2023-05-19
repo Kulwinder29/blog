@@ -36,7 +36,7 @@ class CustomerController extends Controller
 
   public function view()
   {
-    // Select Query 
+    // Select Query
     $customer = Customer::all();
     $data = compact('customer');
     return view('select')->with($data);
@@ -44,7 +44,7 @@ class CustomerController extends Controller
 
   public function trash()
   {
-    // Select Trash Query 
+    // Select Trash Query
     $customer = Customer::onlyTrashed()->get();
     $data = compact('customer');
     return view('trash_user')->with($data);
@@ -52,7 +52,7 @@ class CustomerController extends Controller
 
   public function show($id)
   {
-    // Select Query 
+    // Select Query
     $customer = Customer::find($id);
     // echo '<pre>';
     // print_r($customer);
@@ -63,7 +63,7 @@ class CustomerController extends Controller
 
   public function delete($id)
   {
-    // Delete Query
+    // Trash Query
     $customer = Customer::find($id);
     if (!is_null($customer)) {
       $customer->delete();
@@ -73,7 +73,7 @@ class CustomerController extends Controller
 
   public function forceDelete($id)
   {
-    // Delete Query
+    // forceDelete Query
     $customer = Customer::withTrashed()->find($id);
     if (!is_null($customer)) {
       $customer->forceDelete();
@@ -83,7 +83,7 @@ class CustomerController extends Controller
 
   public function restore($id)
   {
-    // Delete Query
+    // Restore Query
     $customer = Customer::withTrashed()->find($id);
     if (!is_null($customer)) {
       $customer->restore();
@@ -93,7 +93,7 @@ class CustomerController extends Controller
 
   public function edit($id)
   {
-    // Update Query
+    // Edit
     $customer = Customer::find($id);
     if (!is_null($customer)) {
       $url = url('customer/update') . '/' . $id;
@@ -107,6 +107,7 @@ class CustomerController extends Controller
 
   public function update($id, Request $request)
   {
+    // Update Query
     $customer = Customer::find($id);
     $customer->u_name = $request['name'];
     $customer->u_email = $request['email'];
