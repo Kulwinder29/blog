@@ -1,6 +1,6 @@
 <?php
 
-use GuzzleHttp\Psr7\Request;
+// use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\Demo;
@@ -8,6 +8,7 @@ use App\Http\Controllers\singlecontroller;
 use App\Http\Controllers\crud;
 use App\Http\Controllers\CustomerController;
 use App\Models\Customer;
+use Illuminate\Http\Request;
 
 
 /*
@@ -37,6 +38,17 @@ Route::get('register/show/{id}', [CustomerController::class, 'show'])->name('cus
 Route::get('customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
 Route::get('customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::post('customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+
+Route::get('get-session', function(){
+    $session = session()->all();
+    p($session);
+});
+
+Route::get('session-create' , function(Request $request){
+    $request->session()->put('name','Kulwinder Singh');
+    $request->session()->put('id','123');
+    return redirect('get-session');
+});
 
 // Route:: get('/contact',[Demo::class,'contact']);
 // Route::get('/', function () {
