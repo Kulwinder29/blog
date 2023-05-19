@@ -41,6 +41,7 @@ class CustomerController extends Controller
     // echo '<pre>';
     // print_r($customer);
     // die;
+    // print("hello")
     $data = compact('customer');
     return view('select')->with($data);
   }
