@@ -31,11 +31,14 @@ Route::get('/contact', singlecontroller::class);
 // Route::get('register', [FormController::class, 'index']);
 // Route::post('register', [FormController::class, 'register']);
 
-Route::get('register', [CustomerController::class, 'index']);
+Route::get('register', [CustomerController::class, 'index'])->name('register');
 Route::post('register', [CustomerController::class, 'store']);
-Route::get('register/view', [CustomerController::class, 'view']);
+Route::get('register/view', [CustomerController::class, 'view'])->name('view');
+Route::get('register/trash', [CustomerController::class, 'trash'])->name('trash');
 Route::get('register/show/{id}', [CustomerController::class, 'show'])->name('customer.show');
 Route::get('customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('customer/force-delete/{id}', [CustomerController::class, 'forceDelete'])->name('force.delete');
+Route::get('customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
 Route::get('customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::post('customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
 

@@ -38,12 +38,16 @@ class CustomerController extends Controller
   {
     // Select Query 
     $customer = Customer::all();
-    // echo '<pre>';
-    // print_r($customer);
-    // die;
-    // print("hello")
     $data = compact('customer');
     return view('select')->with($data);
+  }
+
+  public function trash()
+  {
+    // Select Trash Query 
+    $customer = Customer::onlyTrashed()->get();
+    $data = compact('customer');
+    return view('trash_user')->with($data);
   }
 
   public function show($id)
@@ -63,6 +67,26 @@ class CustomerController extends Controller
     $customer = Customer::find($id);
     if (!is_null($customer)) {
       $customer->delete();
+    }
+    return redirect('register/view');
+  }
+
+  public function forceDelete($id)
+  {
+    // Delete Query
+    $customer = Customer::withTrashed()->find($id);
+    if (!is_null($customer)) {
+      $customer->forceDelete();
+    }
+    return redirect('register/view');
+  }
+
+  public function restore($id)
+  {
+    // Delete Query
+    $customer = Customer::withTrashed()->find($id);
+    if (!is_null($customer)) {
+      $customer->restore();
     }
     return redirect('register/view');
   }

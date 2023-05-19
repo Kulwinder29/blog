@@ -21,9 +21,9 @@
 </head>
 
 <body>
-    <h1 class="text-center">My Customer</h1>
+    <h1 class="text-center">Trash User</h1>
     <div class="container">
-        <a href="{{ Route('trash') }}" class="btn btn-outline-danger float-right ml-2">Go to trash</a>
+        <a href="{{ Route('view') }}" class="btn btn-outline-primary float-right ml-2">User</a>
         <a href="{{ Route('register') }}" class="btn btn-outline-primary float-right">Add</a>
         <table class="table">
             <thead>
@@ -31,7 +31,6 @@
                     <th>ID</th>
                     <th>NAME</th>
                     <th>EMAIL</th>
-                    <th>VIEW</th>
                     <th>UPDATE</th>
                     <th>DELETE</th>
                 </tr>
@@ -43,13 +42,10 @@
                         <td>{{ $val->u_name }}</td>
                         <td>{{ $val->u_email }}</td>
                         <td>
-                            <a class="btn btn-outline-success" href="{{ route('customer.show', ['id' => $val->u_id]) }}">View</a>
+                            <a class="btn btn-outline-danger" href="{{ route('force.delete', ['id' => $val->u_id]) }}">Delete</a>
                         </td>
                         <td>
-                            <a class="btn btn-outline-primary" href="{{ route('customer.edit', ['id' => $val->u_id]) }}">Update</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-outline-danger" href="{{ route('customer.delete', ['id' => $val->u_id]) }}">Trash</a>
+                            <a class="btn btn-outline-primary" href="{{ route('customer.restore', ['id' => $val->u_id]) }}">Restore</a>
                         </td>
                     </tr>
                 @endforeach
