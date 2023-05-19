@@ -50,6 +50,13 @@ Route::get('session-create' , function(Request $request){
     return redirect('get-session');
 });
 
+Route::get('destroy-session' , function(){
+    // session()->forget('name','id');
+    session()->forget(['name','id']);
+    return redirect('get-session');
+});
+
+
 // Route:: get('/contact',[Demo::class,'contact']);
 // Route::get('/', function () {
 //     return view('home');
