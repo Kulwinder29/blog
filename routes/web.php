@@ -10,7 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,7 +83,7 @@ Route::get('destroy-session' , function(){
 // })->name('/home');
 
 
-//working get method 
+//working get method
 //Route::view('/about','about',["name"=>"Kulwinder"]);
 // Route::get('/about',function(){
 //     // $name = request()->query('name') ;

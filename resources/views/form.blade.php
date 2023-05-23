@@ -24,7 +24,11 @@
             <h1 class="text-center">{{ $title }}</h1>
             <form action="{{ $url }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <img src="@isset($customer->img){{$customer->img}}@endisset" alt="">
+
+                @isset($customer->img)
+                <img src="{{ asset('storage/photos/') . "/" . $customer->img }}" alt="" width="100%" height="100%">
+                @endisset
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="">Name :</label>
