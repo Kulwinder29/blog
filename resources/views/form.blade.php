@@ -7,8 +7,7 @@
     <head>
         <title>
             @isset($title)
-                
-            {{ $title }}
+                {{ $title }}
             @endisset
         </title>
         <!-- Required meta tags -->
@@ -23,97 +22,83 @@
 
         <div class="container p-4 shadow mt-4">
             <h1 class="text-center">{{ $title }}</h1>
-            <form action="{{ $url }}" method="post">
+            <form action="{{ $url }}" method="post" enctype="multipart/form-data">
                 @csrf
+                <img src="@isset($customer->img){{$customer->img}}@endisset" alt="">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="">Name :</label>
                         <input type="name" name="name" class="form-control" id=""
-                            value="@isset($customer->u_name)
-                                    {{ $customer->u_name }} 
-                                    @endisset">
+                            value="@isset($customer->u_name){{ $customer->u_name }}@endisset">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="">Email :</label>
                         <input type="email" name="email" class="form-control" id=""
-                            value="@isset($customer->u_email)
-                                    {{ $customer->u_email }} 
-                                  @endisset">
+                            value="@isset($customer->u_email){{ $customer->u_email }}@endisset">
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="">Password :</label>
-                        <input type="password" name="password" class="form-control" id="" placeholder="">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputAddress2">Comfirm Password :</label>
-                        <input type="password" name="password_confirmation" class="form-control" id=""
-                            placeholder="">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="">Country :</label>
-                        <input type="text" name="country" class="form-control" id=""
-                            value="@isset($customer->country)
-                                    {{ $customer->country }} 
-                                   @endisset">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="">State</label>
-                        <input type="text" name="state" class="form-control" id=""
-                            value="@isset($customer->state)
-                                    {{ $customer->state }} 
-                                    @endisset">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="">Address :</label>
-                        <textarea name="address" id="" cols="150" rows="">
-                            @isset($customer->address)
-                                {{ $customer->address }}
-                            @endisset
-                        </textarea>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="">Gender :</label>
-                        <div class="input-group-text">
-                            Male : <input type="radio" name="gender" value="M"
-                                @isset($customer->gender)
-                                    {{ $customer->gender == 'M' ? 'checked' : '' }} 
-                                @endisset
-                                aria-label="Radio button for following text input">
+                <div class="form-group">
+                    <label for="">Image :</label>
+                    <input type="file" name="image" class="form-control" id="" {{-- value="@isset($customer->u_name)
+                                {{ $customer->u_name }}
+                                @endisset"> --}} </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Password :</label>
+                            <input type="password" name="password" class="form-control" id="" placeholder="">
                         </div>
-                        <div class="input-group-text">
-                            Female : <input type="radio" name="gender" value="F"
-                                @isset($customer->gender)
-                                    {{ $customer->gender == 'F' ? 'checked' : '' }} 
-                                @endisset
-                                aria-label="Radio button for following text input">
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress2">Comfirm Password :</label>
+                            <input type="password" name="password_confirmation" class="form-control" id=""
+                                placeholder="">
                         </div>
-                        <div class="input-group-text">
-                            Other : <input type="radio" name="gender" value="O"
-                                @isset($customer->gender)
-                                    {{ $customer->gender == 'O' ? 'checked' : '' }} 
-                                @endisset
-                                aria-label="Radio button for following text input">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Country :</label>
+                            <input type="text" name="country" class="form-control" id=""
+                                value="@isset($customer->country){{ $customer->country }}@endisset">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">State</label>
+                            <input type="text" name="state" class="form-control" id=""
+                                value="@isset($customer->state){{ $customer->state }}@endisset">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="">Address :</label>
+                            <textarea name="address" id="" cols="150" rows="">@isset($customer->address){{ $customer->address }}@endisset</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Gender :</label>
+                            <div class="input-group-text">
+                                Male : <input type="radio" name="gender" value="M"
+                                    @isset($customer->gender){{ $customer->gender == 'M' ? 'checked' : '' }}@endisset
+                                    aria-label="Radio button for following text input">
+                            </div>
+                            <div class="input-group-text">
+                                Female : <input type="radio" name="gender" value="F"
+                                    @isset($customer->gender){{ $customer->gender == 'F' ? 'checked' : '' }}@endisset
+                                    aria-label="Radio button for following text input">
+                            </div>
+                            <div class="input-group-text">
+                                Other : <input type="radio" name="gender" value="O"
+                                    @isset($customer->gender){{ $customer->gender == 'O' ? 'checked' : '' }}@endisset
+                                    aria-label="Radio button for following text input">
+                            </div>
+
                         </div>
 
+                        <div class="form-group col-md-6">
+                            <label for="">Date of birth :</label>
+                            <input type="date" name="dob" class="form-control" id=""
+                                value="@isset($customer->dob){{ $customer->dob }}@endisset">
+                        </div>
                     </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="">Date of birth :</label>
-                        <input type="date" name="dob" class="form-control" id=""
-                            value="@isset($customer->dob)
-                                        {{ $customer->dob }} 
-                                    @endisset">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" name="submit" class="btn btn-outline-dark w-50">Sign in</button>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" name="submit" class="btn btn-outline-dark w-50">Sign in</button>
-                </div>
             </form>
         </div>
 

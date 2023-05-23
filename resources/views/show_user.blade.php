@@ -7,7 +7,7 @@
     <head>
         <title>
             @isset($title)
-                
+
             {{ $title }}
             @endisset
         </title>

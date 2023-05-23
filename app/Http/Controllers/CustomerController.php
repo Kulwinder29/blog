@@ -21,9 +21,13 @@ class CustomerController extends Controller
   {
     // Insert Query
 
+    echo $request->file('image')->store('uploads');
+    // p($request->all());
+    // die;
     $customer = new customer;
     $customer->u_name = $request['name'];
     $customer->u_email = $request['email'];
+    $customer->img = url('/storage/app/uploads') ."/". $request->file('image')->getClientOriginalName();
     $customer->gender = $request['gender'];
     $customer->address = $request['address'];
     $customer->country = $request['country'];
