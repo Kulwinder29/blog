@@ -41,7 +41,7 @@ class CustomerController extends Controller
     public function view()
     {
         // Select Query
-        $customer = Customer::all();
+        $customer = Customer::all()->sortByDesc('u_id');
         $data = compact('customer');
         return view('select')->with($data);
     }

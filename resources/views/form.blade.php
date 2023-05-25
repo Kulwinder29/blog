@@ -26,7 +26,7 @@
                 @csrf
 
                 @isset($customer->img)
-                <img src="{{ asset('storage/photos/') . "/" . $customer->img }}" alt="" width="100%" height="100%">
+                <img style="width: 300px" src="{{ asset('storage/photos/') . "/" . $customer->img }}" alt="" width="100%" height="100%">
                 @endisset
 
                 <div class="form-row">

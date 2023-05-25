@@ -31,9 +31,10 @@
                             print_r($customer);
                         @endphp
                     </pre> --}}
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>EMAIL</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Image</th>
                         <th>Address</th>
                         <th>Country</th>
                         <th>State</th>
@@ -46,6 +47,7 @@
                         <td>{{ $customer->u_id }}</td>
                         <td>{{ $customer->u_name }}</td>
                         <td>{{ $customer->u_email }}</td>
+                        <td><img style="width: 70px; border-radius:50px" src="{{ asset('storage/photos/') . "/" . $customer->img }}" alt="" width="100%" height="100%"></td>
                         <td>{{ $customer->address }}</td>
                         <td>{{ $customer->country }}</td>
                         <td>{{ $customer->state }}</td>
